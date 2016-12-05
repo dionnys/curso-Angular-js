@@ -1,0 +1,68 @@
+<!--<!DOCTYPE html>-->
+<html>
+
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="listadetareas.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.6.0-rc.2/i18n/angular-locale_es-ve.js"></script>
+
+
+<script src="filtros.js"></script>
+
+<title>curso angular Js-Filtros</title>
+
+</head>
+
+<body ng-app="filtros">
+	<div class="container" ng-controller="ControladorFiltros">
+	<h1>Filtros Nativos de Angular JS</h1>
+	<hr>
+			<div class="panel panel-primary">
+					<div class="page-heading">
+						<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-search"> </i></span>
+						<input type="text" class="form-control" placeholder="Buscar Empleado" ng-model="buscar">
+						</div>	
+					</div>
+				
+
+			<div class="panel-body">
+
+
+						<table class="table table-striped">
+
+								<thead>		
+												<tr>
+												<th>
+												<a href="" ng-click ="ordenarPor('nombre') ">
+												Nombre/s</a>
+												<span class="caret" style="cursor: pointer" ng-click="ordenarPor('-nombre')"> </span>
+												</th>
+												<th>Apellido Paterno</th>
+												<th>Apellido Materno</th>
+												<th>Primer dia de trabajo</th>
+												<th>Telefono</th>
+												<th>Salario</th>
+												<th>Bono</th>
+												</tr>
+								</thead>
+										<tbody>
+														<tr ng-repeat="empleado in empleados| orderBy:ordenSeleccionado | filter:buscar">
+														<td>{{empleado.nombre}}</td>
+														<td>{{empleado.paterno | uppercase}}</td>
+														<td>{{empleado.materno | lowercase}}</td>	
+													    <td>{{empleado.primerDia | date: 'fullDate'}} a las {{empleado.primerDia | date: 'h:mma'}}</td>
+													    <td>{{empleado.telefono}}</td>
+														<td>{{empleado.salario | currency}}</td>
+														<td>%{{empleado.bono | number:2}}</td>	
+														</tr>
+										</tbody>
+						</table>
+			</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!--<!DOCTYPE html>-->
+<html>
+
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="listadetareas.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+<script src="listadetarea.js"></script>
+
+<title>curso angular Js- Controladores</title>
+
+</head>
+
+<body ng-app="controlador">
+
+<h2>Lista de Tareas</h2>
+
+<div ng-controller="ControladorTareas">
+<span>{{restantes()}} de {{tarea.length}}</span>
+[<a class="text-danger" href="" ng-click="eliminar()">Eliminar</a>]
+<ul class="unstyled">
+
+	
+<li ng-repeat="tarea in tarea">
+	<input type="checkbox" ng-model="tarea.hecho">
+<span class="hecho-{{tarea.hecho}}">{{tarea.texto}}</span>
+
+</li>
+
+</ul>
+<form ng-submit="agregarTarea ()">
+	 <input type="texto" size="30" placeholder="Agregar una Nueva Tarea" ng-model="textoNuevaTarea">
+	 <button class="btn btn-primary" type="submit">Agregar</button>
+
+
+</form>
+
+</div>
+</body>
+</html>
